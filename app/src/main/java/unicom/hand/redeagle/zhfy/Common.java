@@ -18,7 +18,7 @@ public class Common {
     public static final String BASE_URL = "http://42.236.68.190:8090/";
     public static final String VERSION = "1.0";
 //    public static final String BASE_MD5URL = "http://222.136.225.139:1889";
-    public static final String BASE_MD5URL = "http:// 202.110.98.2:1889";
+    public static final String BASE_MD5URL = "http://202.110.98.2:1889";
 
     public static final String UPLOADFILE = BASE_MD5URL+"/pds/phone/conference/upfileImage";
 }

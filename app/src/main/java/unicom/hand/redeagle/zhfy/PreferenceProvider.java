@@ -210,7 +210,9 @@ public class PreferenceProvider {
 	public String getIp() {
 		SharedPreferences spf = PreferenceManager
 				.getDefaultSharedPreferences(context);
-		return spf.getString("ip1", "pds10.com");
+//		return spf.getString("ip1", "pds10.com");
+		return spf.getString("ip1", "pds01.com");
+
 	}
 	public void setIp2(String homename) {
 		SharedPreferences spf = PreferenceManager
