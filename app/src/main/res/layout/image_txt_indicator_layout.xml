@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="fill_parent"
+        android:layout_height="200dip" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        android:gravity="bottom" >
+
+        <Button
+            android:id="@+id/left_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        android:gravity="bottom" >
+
+        <Button
+            android:id="@+id/right_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+             />
+    </LinearLayout>
+
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="32dip"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="#00000000"
+        android:layout_below="@+id/view_pager"
+        >
+        
+        <ImageView 
+            android:layout_width="18dip"
+            android:layout_height="18dip"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="8dip"
+            android:layout_weight="0"
+            android:src="@drawable/icon_h_pic"
+            android:visibility="gone"
+            />
+        
+        <TextView 
+            android:id="@+id/indicatoer_tv"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textSize="16sp"
+            android:singleLine="true"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="8dip"
+            />
+        
+        <LinearLayout
+	        android:id="@+id/indicater_layout"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="0"
+	        android:layout_marginRight="12dp"
+	        android:gravity="right"
+	        android:minHeight="10dp"
+	        android:minWidth="60dp"
+	        android:orientation="horizontal" >
+    </LinearLayout>
+    </LinearLayout>
+    
+    
+
+</RelativeLayout>

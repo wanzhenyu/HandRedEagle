@@ -1,0 +1,5 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="department_topview_arrowwidth">10.0dp</dimen>
+    <dimen name="department_select_height">36.0dp</dimen>
+</resources>

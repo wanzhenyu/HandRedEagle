@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/common_title_container"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:layout_weight="0"
+        android:visibility="gone"
+        android:background="@color/actionbar_color"
+        android:gravity="center_vertical" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/linearLayout1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_weather"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_weather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_margin="5dp"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@+id/common_title_middle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="掌上红鹰"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <!--<ImageView-->
+                <!--android:id="@+id/imageView1"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:adjustViewBounds="true"-->
+                <!--android:scaleType="fitXY"-->
+                <!--android:src="@drawable/icon_search"-->
+                <!--/>-->
+
+            <unicom.hand.redeagle.view.ImageIndicatorView
+                android:id="@+id/indicate_view"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_height="150dp" />
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:background="@drawable/mdm_top_back"
+                android:layout_height="310dp">
+
+                <LinearLayout
+                    android:layout_width="160dp"
+                    android:id="@+id/imageView1"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:visibility="visible"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/shape_white_nostroke_tran"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:adjustViewBounds="true"
+                        android:text=""
+                        android:textColor="@color/bs_white"
+                        android:gravity="center"
+                        android:textSize="15sp"
+                        android:id="@+id/tv_select"
+                        android:layout_marginLeft="15dp"
+                        />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="23dp"
+                            android:layout_height="23dp"
+                            android:src="@drawable/search"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="10dp"
+                            android:layout_centerVertical="true"
+                            android:id="@+id/iv_right_search"
+                            android:scaleType="fitXY"
+                            android:adjustViewBounds="true"
+
+                            />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:id="@+id/imageView1"-->
+                    <!--android:layout_alignParentBottom="true"-->
+                    <!--android:layout_marginBottom="50dp"-->
+                    <!--android:layout_marginLeft="35dp"-->
+                    <!--android:layout_marginRight="35dp"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:gravity="center"-->
+                    <!--android:visibility="visible"-->
+                    <!--android:background="@drawable/shape_login1"-->
+                    <!--android:layout_height="wrap_content">-->
+
+                    <!--<TextView-->
+
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="25dp"-->
+                        <!--android:adjustViewBounds="true"-->
+                        <!--android:text="关键字"-->
+                        <!--android:textColor="@color/bs_white"-->
+                        <!--android:gravity="center"-->
+                        <!--android:textSize="13sp"-->
+                        <!--android:drawableLeft="@drawable/fangda"-->
+                        <!--/>-->
+                <!--</LinearLayout>-->
+
+
+
+
+
+
+
+
+
+
+
+            </RelativeLayout>
+
+
+
+
+
+
+
+            <unicom.hand.redeagle.zhfy.view.MyGridView
+                android:id="@+id/gridView1"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:background="@null"
+                android:cacheColorHint="@android:color/transparent"
+                android:numColumns="3"
+                android:stretchMode="columnWidth"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                 />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

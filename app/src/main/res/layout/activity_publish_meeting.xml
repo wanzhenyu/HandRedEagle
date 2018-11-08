@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:zhy="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/red"
+        android:layout_height="49dp">
+
+        <ImageView
+            android:id="@+id/common_title_left"
+            android:layout_width="64dip"
+            android:layout_height="fill_parent"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="12.0dip"
+            android:src="@drawable/common_iv_title_back" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:text="发布会议"
+            android:id="@+id/tv_title"
+            android:layout_centerInParent="true"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:text="完成"
+            android:id="@+id/tv_submit"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            />
+
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#F8F8F7"
+        android:text="必填项"
+        android:textColor="#888580"
+        android:textSize="15sp"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:orientation="horizontal"
+        android:layout_height="45dp">
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:text="名称"
+            android:textColor="#343535"
+            android:textSize="15sp"
+            android:gravity="center_vertical"
+
+            />
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text=""
+            android:textColor="#343535"
+            android:textColorHint="#343535"
+            android:hint="请输入会议名称"
+            android:textSize="15sp"
+            android:gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:id="@+id/et_name"
+            android:cursorVisible="true"
+            android:textCursorDrawable="@drawable/cursor_drawable"
+            android:background="@color/white"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:orientation="horizontal"
+        android:layout_height="45dp">
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:text="主题"
+            android:textColor="#343535"
+            android:textSize="15sp"
+            android:gravity="center_vertical"
+
+            />
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text=""
+            android:textColor="#343535"
+            android:textSize="15sp"
+            android:textColorHint="#343535"
+            android:hint="请输入会议主题"
+            android:gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:id="@+id/et_theme"
+            android:cursorVisible="true"
+            android:textCursorDrawable="@drawable/cursor_drawable"
+            android:background="@color/white"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:id="@+id/rl_time"
+        android:layout_height="45dp">
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:text="时间"
+            android:textColor="#343535"
+            android:textSize="15sp"
+            android:gravity="center_vertical"
+
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:text="点击选择时间"
+            android:textColor="#343535"
+            android:textSize="15sp"
+            android:gravity="center_vertical"
+            android:id="@+id/tv_time"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:orientation="horizontal"
+        android:layout_height="45dp">
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:text="地点"
+            android:textColor="#343535"
+            android:textSize="15sp"
+            android:gravity="center_vertical"
+
+            />
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text=""
+            android:textColor="#343535"
+            android:textSize="15sp"
+            android:textColorHint="#343535"
+            android:hint="请输入会议地点"
+            android:gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:id="@+id/et_loc"
+            android:cursorVisible="true"
+            android:textCursorDrawable="@drawable/cursor_drawable"
+            android:background="@color/white"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:orientation="horizontal"
+        android:layout_height="45dp">
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:text="授课人"
+            android:textColor="#343535"
+            android:textSize="15sp"
+            android:gravity="center_vertical"
+
+            />
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text=""
+            android:textColor="#343535"
+            android:textSize="15sp"
+            android:textColorHint="#343535"
+            android:hint="请输入会议授课人"
+            android:gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:id="@+id/et_lecture"
+            android:cursorVisible="true"
+            android:textCursorDrawable="@drawable/cursor_drawable"
+            android:background="@color/white"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line"
+        />
+
+
+
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="#F8F8F7"
+                android:text="选填项"
+                android:textColor="#888580"
+                android:textSize="15sp"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:orientation="horizontal"
+                android:layout_height="45dp">
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="45dp"
+                    android:text="主持人"
+                    android:textColor="#343535"
+                    android:textSize="15sp"
+                    android:gravity="center_vertical"
+
+                    />
+
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:text=""
+                    android:textColor="#343535"
+                    android:textSize="15sp"
+                    android:textColorHint="#343535"
+                    android:hint="请输入主持人"
+                    android:gravity="center_vertical"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/et_presenter"
+                    android:cursorVisible="true"
+                    android:textCursorDrawable="@drawable/cursor_drawable"
+                    android:background="@color/white"
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line"
+                />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:orientation="horizontal"
+                android:layout_height="45dp">
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="45dp"
+                    android:text="记录人"
+                    android:textColor="#343535"
+                    android:textSize="15sp"
+                    android:gravity="center_vertical"
+
+                    />
+
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:text=""
+                    android:textColor="#343535"
+                    android:textSize="15sp"
+                    android:textColorHint="#343535"
+                    android:hint="请输入记录人"
+                    android:gravity="center_vertical"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/et_recoder"
+                    android:cursorVisible="true"
+                    android:textCursorDrawable="@drawable/cursor_drawable"
+                    android:background="@color/white"
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line"
+                />
+
+
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:id="@+id/rl_joinmemeber"
+                android:layout_height="45dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:text="参会人员"
+                    android:textColor="#343535"
+                    android:textSize="15sp"
+                    android:gravity="center_vertical"
+
+                    />
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:gravity="center_vertical"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/arrow_right_normal"
+                    />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line"
+                />
+
+            <com.zhy.view.flowlayout.TagFlowLayout
+                android:id="@+id/fl_qx"
+                zhy:max_select="-1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
+            </com.zhy.view.flowlayout.TagFlowLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>

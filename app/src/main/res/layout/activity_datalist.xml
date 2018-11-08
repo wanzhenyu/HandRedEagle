@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+
+    <RelativeLayout
+        android:id="@+id/common_title_container"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:background="@color/red"
+        android:orientation="horizontal"
+        android:gravity="center_vertical" >
+        <ImageView
+            android:id="@+id/common_title_left"
+            android:layout_width="64dip"
+            android:layout_height="fill_parent"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="12.0dip"
+            android:src="@drawable/common_iv_title_back" />
+        <EditText
+            android:id="@+id/et_text"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="fill_parent"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:gravity="center"
+            android:imeOptions="actionSearch"
+            android:singleLine="true"
+            android:inputType="text"
+            android:textSize="14sp"
+            android:hint="请输入要查找的内容"
+            android:textColorHint="@color/gray"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:visibility="gone"
+            android:background="@drawable/shape_white" />
+
+        <TextView
+            android:id="@+id/common_title_right"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:clickable="true"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:singleLine="true"
+            android:text="已选联系人"
+            />
+
+    </RelativeLayout>
+
+
+    <ListView
+        android:id="@+id/department_datalist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@color/line"
+        android:dividerHeight="1dp"
+        android:listSelector="@color/transparent"
+        android:overScrollMode="never"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="none"
+        android:layout_marginBottom="12dp"
+        android:textColor="@color/white" />
+
+
+
+
+
+
+
+
+</LinearLayout>

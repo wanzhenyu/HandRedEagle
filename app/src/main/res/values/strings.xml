@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">掌上红鹰</string>
+    <string name="info_exit">再按一次退出程序</string>
+    <string name="version" translatable="false">20180321</string>
+    <string name="title_activity_my_depart_ment">MyDepartMentActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="layout_tag1">✔当视频方数>设定的最大分屏数时,每隔[轮询间隔]的秒数轮询一次</string>
+    <string name="layout_tag2">✔轮方式\n单视图轮询:每次仅轮换一张\n全屏轮询:每次轮换全屏小视图</string>
+    <string-array name="meet_server_type">
+        <item>YMS服务器</item>
+        <item>Cloud服务器</item>
+    </string-array>
+</resources>

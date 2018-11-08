@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:gravity="center_vertical"
+    android:padding="5dp"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/shyk_dk"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/iv_img"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="17sp"
+            android:textColor="@color/black"
+            android:text="中共中央政治局常务委员会召开会议"
+            android:layout_marginLeft="15dp"
+            android:gravity="center_vertical"
+            android:id="@+id/tv_title"
+            android:layout_height="wrap_content" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/gray"
+                android:text="支部委员会"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:layout_marginLeft="15dp"
+                android:maxWidth="110dp"
+                android:id="@+id/ty_type"
+                android:visibility="gone"
+                android:gravity="center_vertical"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/gray"
+                android:text="会议时间:2018-04-14 09:34"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:layout_marginLeft="15dp"
+                android:gravity="center_vertical"
+                android:id="@+id/tv_time"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="match_parent"
+                android:textSize="12sp"
+                android:textColor="@color/green"
+                android:text="未召开"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="right"
+                android:gravity="center"
+                android:layout_marginRight="5dp"
+                android:id="@+id/tv_status"
+                android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

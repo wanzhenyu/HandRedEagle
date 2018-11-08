@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    
+    <RelativeLayout
+        android:id="@+id/common_title_container"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:layout_weight="0"
+        android:background="@color/actionbar_color"
+        android:gravity="center_vertical" >
+    <ImageView
+            android:id="@+id/common_title_left"
+            android:layout_width="64dip"
+            android:layout_height="fill_parent"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="12.0dip"
+            android:src="@drawable/common_iv_title_back" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@+id/common_title_middle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="功能选择"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+
+
+        <ImageView
+            android:layout_width="23dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="15dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:id="@+id/iv_right"
+            android:src="@drawable/mdm_search"
+            />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+
+            <View
+                android:layout_width="100dp"
+                android:layout_height="1dp"
+                android:background="@color/pale"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="添加"
+                 android:textSize="16sp"
+                android:visibility="visible"
+                android:gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                />
+            <View
+                android:layout_width="100dp"
+                android:layout_height="1dp"
+                android:background="@color/pale"
+                />
+
+
+        </LinearLayout>
+            <unicom.hand.redeagle.zhfy.view.MyGridView
+                android:id="@+id/gridView1"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:background="@null"
+                android:cacheColorHint="@android:color/transparent"
+                android:horizontalSpacing="10dp"
+                android:numColumns="3"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="1dp"
+                    android:background="@color/pale"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="已添加"
+                    android:textSize="16sp"
+                    android:visibility="visible"
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    />
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="1dp"
+                    android:background="@color/pale"
+                    />
+
+
+            </LinearLayout>
+
+            <unicom.hand.redeagle.zhfy.view.MyGridView
+                android:id="@+id/gridView2"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:background="@null"
+                android:cacheColorHint="@android:color/transparent"
+                android:horizontalSpacing="10dp"
+                android:numColumns="3"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="10dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="sellerSzd">
+        <item>位置</item>
+        <item>郑州</item>
+        <item>开封</item>
+        <item>洛阳</item>
+        <item>平顶山</item>
+        <item>安阳</item>
+        <item>鹤壁</item>
+        <item>新乡</item>
+        <item>焦作</item>
+        <item>濮阳</item>
+        <item>许昌</item>
+        <item>漯河</item>
+        <item>三门峡</item>
+        <item>商丘</item>
+        <item>周口</item>
+        <item>驻马店</item>
+        <item>南阳</item>
+        <item>信阳</item>
+        <item>济源</item>
+    </string-array>
+    <!--
+<option value="none" >不限车龄</option>
+//    <option  value="0,1" >1年以内</option>
+//    <option  value="0,2" >2年以内</option>
+//    <option  value="0,3" >3年以内</option>
+//    <option  value="3,5" >3-5年</option>
+//    <option  value="5,max" >5年以上</option>
+//    <option value="none" >不限价格</option>
+//    <option  value="0,5" >5万以内</option>
+//    <option value="5,8" >5-8万</option>
+//    <option value="8,10">8-10万</option>
+//    <option value="10,15">10-15万</option> 
+//    <option value="15,20">15-20万</option> 
+//    <option value="20,30">20-30万</option>
+//    <option value="30,50">30-50万</option>
+//    <option value="50,max">50万以上</option
+    -->
+    <string-array name="carNx">
+        <item>车龄</item>
+        <item>不限车龄</item>
+        <item>1年以内</item>
+        <item>2年以内</item>
+        <item>3年以内</item>
+        <item>3-5年</item>
+        <item>5年以上</item>
+    </string-array>
+    <string-array name="carJg">
+        <item>价格</item>
+        <item>不限价格</item>
+        <item>5万以内</item>
+        <item>5-8万</item>
+        <item>8-10万</item>
+        <item>10-15万</item>
+        <item>15-20万</item>
+        <item>20-30万</item>
+        <item>30-50万</item>
+        <item>50万以上</item>
+    </string-array>
+    <string-array name="carpp">
+        <item>品牌</item>
+    </string-array>
+    <string-array name="carcx">
+        <item>车系</item>
+    </string-array>
+          <string-array name="sp1">
+        <item>平顶山市</item>
+    </string-array>
+       <string-array name="sp2">
+        <item>县级 ></item>
+    </string-array>
+       <string-array name="sp3">
+        <item>乡、村级></item>
+    </string-array>
+    
+          <string-array name="animation_effects">
+        <item>Standard</item>
+        <item>Tablet</item>
+        <item>CubeIn</item>
+        <item>CubeOut</item>
+        <item>FlipVertical</item>
+        <item>FlipHorizontal</item>
+        <item>Stack</item>
+        <item>ZoomIn</item>
+        <item>ZoomOut</item>
+        <item>RotateUp</item>
+        <item>RotateDown</item>
+        <item>Accordion</item>
+    </string-array>
+</resources>

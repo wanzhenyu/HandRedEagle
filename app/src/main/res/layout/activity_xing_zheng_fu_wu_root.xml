@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/friend_tab_bg"
+    android:descendantFocusability="blocksDescendants"
+    tools:context="unicom.hand.redeagle.zhfy.ui.XingZhengFuWuRootActivity">
+
+    <include layout="@layout/include_title_left_right"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/friend_tab_bg"
+            >
+
+
+
+
+            <LinearLayout
+                android:orientation="horizontal" android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:background="@color/white"
+                android:id="@+id/ll_sj"
+                android:layout_marginTop="20dp"
+                android:layout_height="50dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/list_dw"
+                    android:layout_marginLeft="20dp"
+                    />
+                <TextView
+                    android:id="@+id/tv_szdw"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:layout_width="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="15dp"
+                    android:drawableRight="@mipmap/right_arrow"
+                    android:layout_marginRight="8dp"
+                    android:typeface="monospace"
+                    android:text="市直单位"
+                    android:layout_height="50dp" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line"
+                />
+            <LinearLayout
+                android:orientation="horizontal" android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:background="@color/white"
+                android:id="@+id/ll_xj"
+                android:layout_height="50dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/list_dw"
+                    android:layout_marginLeft="20dp"
+                    />
+                <TextView
+                    android:id="@+id/tv_xjdw"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:layout_width="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="15dp"
+                    android:drawableRight="@mipmap/right_arrow"
+                    android:layout_marginRight="8dp"
+                    android:typeface="monospace"
+                    android:text="县级单位"
+                    android:layout_height="50dp" />
+            </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+            <!--<unicom.hand.redeagle.zhfy.view.MyListView-->
+                <!--android:id="@+id/department_datalist"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@color/white"-->
+                <!--android:cacheColorHint="@android:color/transparent"-->
+                <!--android:divider="@color/line"-->
+                <!--android:dividerHeight="1dp"-->
+                <!--android:listSelector="@color/transparent"-->
+                <!--android:overScrollMode="never"-->
+                <!--android:scrollbarStyle="outsideOverlay"-->
+                <!--android:scrollbars="none"-->
+                <!--android:textColor="@color/white" />-->
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:text="最近联系"
+                android:id="@+id/tv_zj"
+                />
+            <unicom.hand.redeagle.zhfy.view.MyListView
+                android:id="@+id/department_member"
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:cacheColorHint="@android:color/transparent"
+                android:divider="@color/line"
+                android:dividerHeight="1dp"
+                android:listSelector="@color/transparent"
+                android:overScrollMode="never"
+                android:scrollbarStyle="outsideOverlay"
+                android:scrollbars="none"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+</LinearLayout>

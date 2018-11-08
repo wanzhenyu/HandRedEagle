@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <include layout="@layout/include_title_center"/>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_FindFragment_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#F0F0F2"
+        app:tabIndicatorColor="@color/red"
+        app:tabSelectedTextColor="@color/red"
+        app:tabGravity="center"
+        app:tabMode="fixed"
+        app:tabTextColor="#999999"
+        app:tabIndicatorHeight="3dp"
+        app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
+        />
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/vp_safelog"
+        >
+
+
+    </android.support.v4.view.ViewPager>
+
+</LinearLayout>

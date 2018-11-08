@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/red"
+        android:layout_height="49dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="10dp"
+            android:gravity="center"
+            android:src="@drawable/common_iv_title_back"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="6dp"
+            android:id="@+id/iv_left"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:text="高级会控"
+            android:id="@+id/tv_title"
+            android:layout_centerInParent="true"
+            />
+        <ImageView
+            android:layout_width="23dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="15dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:id="@+id/iv_right"
+            android:src="@drawable/mdm_search"
+            android:visibility="gone"
+            />
+
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#F8F8F7"
+        android:text="高级功能"
+        android:textColor="#888580"
+        android:textSize="15sp"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:id="@+id/tv_join_member"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/rl_invite"
+        android:layout_height="45dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/c_invite"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:id="@+id/iv_1"
+            android:padding="5dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:textSize="17sp"
+            android:text="邀请"
+            android:id="@+id/tv_invite"
+            android:layout_toRightOf="@id/iv_1"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_right_normal"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/light_gray"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="60dp"
+            />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/rl_layout"
+        android:layout_height="45dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/c_layout"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:id="@+id/iv_2"
+            android:padding="5dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:textSize="17sp"
+            android:text="布局"
+            android:layout_toRightOf="@id/iv_2"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_right_normal"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/light_gray"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="60dp"
+            />
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/rl_textmsg"
+        android:layout_height="45dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/c_msg"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:id="@+id/iv_3"
+            android:padding="5dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:textSize="17sp"
+            android:text="文字消息"
+            android:layout_toRightOf="@id/iv_3"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_right_normal"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/light_gray"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="60dp"
+            />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/rl_recoder"
+        android:layout_height="45dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/c_recoder"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:id="@+id/iv_4"
+            android:padding="5dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:textSize="17sp"
+            android:text="会议录制"
+            android:layout_toRightOf="@id/iv_4"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_right_normal"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/iv_right_recoder"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:textSize="15sp"
+            android:text=""
+            android:layout_toLeftOf="@id/iv_right_recoder"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:id="@+id/tv_recoder_status"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/light_gray"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="60dp"
+            />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#F8F8F7"
+        android:text="全局操作"
+        android:textColor="#888580"
+        android:textSize="15sp"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/rl_unforbiddenask"
+        android:layout_height="45dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/c_mic"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:id="@+id/iv_5"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:textSize="17sp"
+            android:text="全员解除禁言"
+            android:layout_toRightOf="@id/iv_5"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_right_normal"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/light_gray"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="60dp"
+            />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/rl_forbiddenask"
+        android:layout_height="45dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/c_unmic"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:id="@+id/iv_6"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:textSize="17sp"
+            android:text="全员禁言"
+            android:layout_toRightOf="@id/iv_6"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_right_normal"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/light_gray"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="60dp"
+            />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/rl_oknoise"
+        android:layout_height="45dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/c_volume"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:id="@+id/iv_7"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:textSize="17sp"
+            android:text="全员解除闭音"
+            android:layout_toRightOf="@id/iv_7"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_right_normal"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/light_gray"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="60dp"
+            />
+
+    </RelativeLayout>
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/rl_closenoise"
+        android:layout_height="45dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/c_closenoise"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:id="@+id/iv_8"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:textSize="17sp"
+            android:text="全员闭音"
+            android:layout_toRightOf="@id/iv_8"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_right_normal"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/light_gray"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="60dp"
+            />
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/rl_unlock"
+        android:layout_height="45dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/c_unlock"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:id="@+id/iv_9"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:textSize="17sp"
+            android:text="解锁会议"
+            android:layout_toRightOf="@id/iv_9"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_right_normal"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/light_gray"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="60dp"
+            />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/rl_lock"
+        android:layout_height="45dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/c_lock"
+            android:layout_centerVertical="true"
+            android:id="@+id/iv_10"
+            android:layout_margin="5dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:textSize="17sp"
+            android:text="锁定会议"
+            android:layout_toRightOf="@id/iv_10"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_right_normal"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/light_gray"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="60dp"
+            />
+
+    </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:id="@+id/rl_exit"
+                android:layout_height="45dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/conference_setting_exit"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/iv_11"
+                    android:layout_margin="5dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray"
+                    android:textSize="17sp"
+                    android:text="退出会议"
+                    android:layout_toRightOf="@id/iv_11"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/arrow_right_normal"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/light_gray"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="60dp"
+                    />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

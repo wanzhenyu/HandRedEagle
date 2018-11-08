@@ -1,0 +1,118 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:id="@+id/framecontent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+    </FrameLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="#DBDBDB"
+        android:layout_weight="0"
+        />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:id="@+id/rg_group"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:paddingTop="8dp"
+        >
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableTop="@drawable/rb_selector_fwmdm"
+            android:layout_weight="1"
+            android:id="@+id/rb_mdm"
+            android:button="@null"
+            android:gravity="center"
+            android:text="服务面对面"
+            android:drawablePadding="3dp"
+            android:textColor="@drawable/teb_textcolor_selector"
+            android:textSize="12sp"
+            />
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableTop="@drawable/rb_selector_shyk"
+            android:layout_weight="1"
+            android:id="@+id/rb_shyk"
+            android:button="@null"
+            android:gravity="center"
+            android:text="三会一课"
+            android:drawablePadding="3dp"
+            android:textColor="@drawable/teb_textcolor_selector"
+            android:textSize="12sp"
+            />
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableTop="@drawable/rb_selector_index"
+            android:layout_weight="1"
+            android:id="@+id/rb_index"
+            android:button="@null"
+            android:gravity="center"
+            android:text="首页"
+            android:drawablePadding="3dp"
+            android:textColor="@drawable/teb_textcolor_selector"
+            android:textSize="12sp"
+            android:checked="true"
+            />
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableTop="@drawable/rb_selector_sphy"
+            android:layout_weight="1"
+            android:id="@+id/rb_sphy"
+            android:button="@null"
+            android:gravity="center"
+            android:text="视频会议"
+            android:drawablePadding="3dp"
+            android:textColor="@drawable/teb_textcolor_selector"
+            android:textSize="12sp"
+            />
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableTop="@drawable/rb_selector_me"
+            android:layout_weight="1"
+            android:id="@+id/rb_me"
+            android:button="@null"
+            android:gravity="center"
+            android:text="我的"
+            android:drawablePadding="3dp"
+            android:textColor="@drawable/teb_textcolor_selector"
+            android:textSize="12sp"
+            />
+    </RadioGroup>
+
+
+
+
+
+
+
+
+    <!--<android.support.v4.app.FragmentTabHost-->
+        <!--android:id="@android:id/tabhost"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="0" >-->
+
+        <!--<FrameLayout-->
+            <!--android:id="@android:id/tabcontent"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="0" />-->
+    <!--</android.support.v4.app.FragmentTabHost>-->
+
+</LinearLayout>

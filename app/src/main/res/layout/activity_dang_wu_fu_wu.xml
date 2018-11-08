@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+
+
+
+
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:background="@drawable/dwfw_back"
+                android:layout_height="220dp">
+                <ImageView
+                    android:id="@+id/common_title_left"
+                    android:layout_width="50dip"
+                    android:layout_height="50dip"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:padding="12.0dip"
+                    android:src="@drawable/common_iv_title_back" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="党务服务"
+                    android:textColor="@color/white"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="12dp"
+                    android:textSize="17sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/imageView1"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="50dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:background="@drawable/dwfw_back"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:adjustViewBounds="true"
+                        android:text="关键字"
+                        android:textColor="@color/bs_white"
+                        android:gravity="center"
+                        android:textSize="13sp"
+                        android:drawableLeft="@drawable/fangda"
+                        />
+                </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+            </RelativeLayout>
+
+
+
+
+
+
+
+            <unicom.hand.redeagle.zhfy.view.MyGridView
+                android:id="@+id/gridView1"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:background="@null"
+                android:cacheColorHint="@android:color/transparent"
+                android:numColumns="3"
+                android:stretchMode="columnWidth"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

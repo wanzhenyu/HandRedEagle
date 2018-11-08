@@ -1,0 +1,162 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:id="@+id/framecontent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+    </FrameLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#DBDBDB"
+        />
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:id="@+id/rg_group"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:paddingTop="3dp"-->
+        <!--&gt;-->
+
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:drawableTop="@drawable/rb_selector_sphy_sphy"-->
+            <!--android:layout_weight="1"-->
+            <!--android:id="@+id/rb_1"-->
+            <!--android:button="@null"-->
+            <!--android:gravity="center"-->
+            <!--android:text="视频会议"-->
+            <!--android:textColor="@drawable/teb_textcolor_selector"-->
+            <!--android:textSize="14sp"-->
+            <!--android:checked="true"-->
+            <!---->
+            <!--/>-->
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:drawableTop="@drawable/rb_selector_sphy_hyrc"-->
+            <!--android:layout_weight="1"-->
+            <!--android:id="@+id/rb_2"-->
+            <!--android:button="@null"-->
+            <!--android:gravity="center"-->
+            <!--android:text="会议日程"-->
+            <!--android:textColor="@drawable/teb_textcolor_selector"-->
+            <!--android:textSize="14sp"-->
+            <!--/>-->
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:drawableTop="@drawable/rb_selector_sphy_contact"-->
+            <!--android:layout_weight="1"-->
+            <!--android:id="@+id/rb_3"-->
+            <!--android:button="@null"-->
+            <!--android:gravity="center"-->
+            <!--android:text="联系人"-->
+            <!--android:textColor="@drawable/teb_textcolor_selector"-->
+            <!--android:textSize="14sp"-->
+
+            <!--/>-->
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:drawableTop="@drawable/rb_selector_sphy_dial"-->
+            <!--android:layout_weight="1"-->
+            <!--android:id="@+id/rb_4"-->
+            <!--android:button="@null"-->
+            <!--android:gravity="center"-->
+            <!--android:text="拨号"-->
+            <!--android:textColor="@drawable/teb_textcolor_selector"-->
+            <!--android:textSize="14sp"-->
+            <!--/>-->
+
+    <!--</LinearLayout>-->
+
+
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:id="@+id/rg_group"
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        >
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:drawableTop="@drawable/rb_selector_sphy_sphy"
+            android:layout_weight="1"
+            android:id="@+id/rb_1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="会议"
+            android:textColor="@drawable/teb_textcolor_selector"
+            android:textSize="13sp"
+            android:checked="true"
+            />
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:drawableTop="@drawable/rb_selector_sphy_hyrc"
+            android:layout_weight="1"
+            android:id="@+id/rb_2"
+            android:button="@null"
+            android:gravity="center"
+            android:text="日程"
+            android:textColor="@drawable/teb_textcolor_selector"
+            android:textSize="13sp"
+            />
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:drawableTop="@drawable/rb_selector_sphy_contact"
+            android:layout_weight="1"
+            android:id="@+id/rb_3"
+            android:button="@null"
+            android:gravity="center"
+            android:text="联系人"
+            android:textColor="@drawable/teb_textcolor_selector"
+            android:textSize="13sp"
+
+            />
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:drawableTop="@drawable/rb_selector_sphy_dial"
+            android:layout_weight="1"
+            android:id="@+id/rb_4"
+            android:button="@null"
+            android:gravity="center"
+            android:text="拨号"
+            android:textColor="@drawable/teb_textcolor_selector"
+            android:textSize="13sp"
+            />
+
+    </RadioGroup>
+
+
+
+
+    <!--<android.support.v4.app.FragmentTabHost-->
+    <!--android:id="@android:id/tabhost"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="0" >-->
+
+    <!--<FrameLayout-->
+    <!--android:id="@android:id/tabcontent"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:layout_weight="0" />-->
+    <!--</android.support.v4.app.FragmentTabHost>-->
+
+</LinearLayout>
