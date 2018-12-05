@@ -7,7 +7,7 @@ import com.lidroid.xutils.db.annotation.Table;
  *
  */
 // @Table(name="t_core_citylevel")
-@Table(name = "t_Directory_2018_0412")
+@Table(name = "t_Directory_2018_1127")
 public class MyCityBean2 extends BaseBean{
 	private String id;
 	private int areaId;

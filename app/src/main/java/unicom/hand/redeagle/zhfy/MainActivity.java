@@ -1,15 +1,12 @@
 package unicom.hand.redeagle.zhfy;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.PersistableBundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTabHost;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -31,6 +28,19 @@ import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.DbUtils;
 import com.lidroid.xutils.db.sqlite.WhereBuilder;
 import com.lidroid.xutils.exception.DbException;
+import com.yealink.callscreen.ExternalInterface;
+import com.yealink.callscreen.function.OnInviteListener;
+import com.yealink.common.data.CloudProfile;
+import com.yealink.sdk.YealinkApi;
+
+import net.tsz.afinal.FinalHttp;
+import net.tsz.afinal.http.AjaxCallBack;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import unicom.hand.redeagle.R;
 import unicom.hand.redeagle.zhfy.bean.ItemBean;
@@ -41,36 +51,15 @@ import unicom.hand.redeagle.zhfy.bean.SerializableMap;
 import unicom.hand.redeagle.zhfy.fragment.Fragment0;
 import unicom.hand.redeagle.zhfy.fragment.Fragment2;
 import unicom.hand.redeagle.zhfy.fragment.Fragment3;
-import unicom.hand.redeagle.zhfy.fragment.Fragment_spzb;
 import unicom.hand.redeagle.zhfy.fragment.IndexFragment;
 import unicom.hand.redeagle.zhfy.fragment.LoginSphyFragment;
 import unicom.hand.redeagle.zhfy.fragment.ShykFragment;
 import unicom.hand.redeagle.zhfy.ui.LoginActivity;
 import unicom.hand.redeagle.zhfy.ui.LoginSphyActivity;
-import unicom.hand.redeagle.zhfy.ui.MeetingRecoderActivity;
 import unicom.hand.redeagle.zhfy.ui.SelectMemberJoinActivity;
 import unicom.hand.redeagle.zhfy.ui.SphyMainActivity;
 import unicom.hand.redeagle.zhfy.ui.UpdateManager;
 import unicom.hand.redeagle.zhfy.utils.GsonUtil;
-import unicom.hand.redeagle.zhfy.utils.UIUtils;
-
-import com.yealink.base.model.ConferenceInfo;
-import com.yealink.callscreen.ExternalInterface;
-import com.yealink.callscreen.function.OnInviteListener;
-import com.yealink.common.data.CloudProfile;
-import com.yealink.common.data.Contact;
-import com.yealink.common.data.SipProfile;
-import com.yealink.sdk.YealinkApi;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-
-import java.lang.reflect.Type;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 import static unicom.hand.redeagle.R.id.tv_status;
 
@@ -104,7 +93,7 @@ public  class MainActivity extends AppCompatActivity implements LoginSphyFragmen
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
-        UpdateManager manager = new UpdateManager(MainActivity.this, "zshy_handredeagle");
+        UpdateManager manager = new UpdateManager(MainActivity.this, "zshy_handredeagle2");
         manager.checkUpdateInfo();
         context = MainActivity.this;
         setDialog();
@@ -121,9 +110,6 @@ public  class MainActivity extends AppCompatActivity implements LoginSphyFragmen
             YealinkApi.instance().setExtInterface(new ExternalInterface() {
                 @Override
                 public void inviteMember(FragmentManager manager, OnInviteListener listener, String[] members) {
-    //                MeetInviteFragment fragment = new MeetInviteFragment();
-    //                fragment.show(manager);
-
                     Intent intent = new Intent(MainActivity.this, SelectMemberJoinActivity.class);
                     startActivityForResult(intent,100);
                 }
@@ -158,15 +144,6 @@ public  class MainActivity extends AppCompatActivity implements LoginSphyFragmen
             } catch (Exception e) {
                 e.printStackTrace();
             }
-//            ArrayList<Contact> meetnowcontact = data.getParcelableArrayListExtra("list");
-//            if (meetnowcontact!=null&&meetnowcontact.size()>0){
-//                Log.e("aaaa",meetnowcontact.size()+"!!!!!");
-//                String[] strings = new String[meetnowcontact.size()];
-//                for (int i = 0;i<meetnowcontact.size();i++){
-//                    strings[i] = meetnowcontact.get(i).getSerialNumber();
-//                }
-//                YealinkApi.instance().meetInvite(strings);
-//            }
         }
     }
 
@@ -279,18 +256,14 @@ public  class MainActivity extends AppCompatActivity implements LoginSphyFragmen
 //                        Log.d(TAG, "list=" + list.size() + "");
                     }
                     for (MyCityBean2 myCityBean2 :lista_upData){
+                        myCityBean2.setId(myCityBean2.getAreaId()+"");
+                        myCityBean2.setExpanding(1);
                         try {
-                            db.delete(MyCityBean2.class, WhereBuilder.b("id", "=", myCityBean2.getAreaId()));
+                            db.deleteById(MyCityBean2.class,(myCityBean2.getAreaId()+""));
+//                            db.delete(MyCityBean2.class, WhereBuilder.b("id", "=", myCityBean2.getAreaId()));
                         } catch (DbException e) {
                             e.printStackTrace();
                         }
-                    }
-                    try {
-                        List<MyCityBean2> lastList =db.findAll(MyCityBean2.class);
-//                        if (lastList!=null)
-//                            Log.d(TAG, "delete=" + lastList.size() + "");
-                    } catch (Exception e) {
-                        e.printStackTrace();
                     }
                 }
                 if (result.getDelete() != null) {
@@ -299,7 +272,6 @@ public  class MainActivity extends AppCompatActivity implements LoginSphyFragmen
                                     GsonUtil.getJson(result
                                             .getDelete()),
                                     dataType);
-//                    Log.d(TAG, "lista_delete=" + lista_delete.size() + "");
                 }
                 pb.setProgress(65);
                 if (list.size()>0) {
@@ -313,6 +285,8 @@ public  class MainActivity extends AppCompatActivity implements LoginSphyFragmen
                     try {
                         statusText.setText("更新数据中！");
                         db.saveOrUpdateAll(list);
+//                        db.saveAll(lista_add);
+//                        db.updateAll(lista_upData);
                     } catch (DbException e) {
                         e.printStackTrace();
                     }
@@ -324,6 +298,8 @@ public  class MainActivity extends AppCompatActivity implements LoginSphyFragmen
                 pb.setProgress(100);
                 if (lista_delete!=null) {
                     for (MyCityBean2 myCityBean2 : lista_delete) {
+                            myCityBean2.setId(myCityBean2.getAreaId()+"");
+                            myCityBean2.setExpanding(1);
                         try {
                             db.delete(MyCityBean2.class, WhereBuilder.b("id", "=", myCityBean2.getAreaId()));
                         } catch (DbException e) {

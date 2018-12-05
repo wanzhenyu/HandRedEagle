@@ -76,8 +76,9 @@ public class HyrcMd5Adapter extends BaseAdapter {
         final long endTime = Long.parseLong(meeting.getExpiryTime());
         String endformat = simpledate.format(new Date(endTime));
         holder.tv_time.setText(startformat+"~"+endformat);
-
         final String title = meeting.getSubject();
+        Log.e("eee",title+",时间是："+startformat+"~"+endformat);
+
 //        title = UIUtils.getHyrcTtitle(title);
         holder.tv_des.setText(UIUtils.getRealText(UIUtils.getHyrcTtitle(title)));
         String organizer = meeting.getOrganizerName();
@@ -117,23 +118,41 @@ public class HyrcMd5Adapter extends BaseAdapter {
         }else{
 
         }
+        long currenttime = System.currentTimeMillis();
         int state = meeting.getState();
-        if(state == 0){
+        if(currenttime < startTime){
             holder.tv_state.setText("待开始");
             holder.tv_state.setTextColor(UIUtils.getColor(R.color.gray));
             holder.tv_state.setBackgroundResource(R.drawable.shape_gray_stroke);
             holder.tv_join.setVisibility(View.INVISIBLE);
-        }else if(state == 1){
-            holder.tv_state.setText("正在进行");
+        }else if(startTime<=currenttime && currenttime<=endTime){
+            holder.tv_state.setText("进行中");
             holder.tv_state.setTextColor(Color.parseColor("#FDBB43"));
             holder.tv_state.setBackgroundResource(R.drawable.shape_ing_stroke);
             holder.tv_join.setVisibility(View.VISIBLE);
-        }else if(state == 2){
+        }else{
             holder.tv_state.setText("已结束");
             holder.tv_state.setTextColor(UIUtils.getColor(R.color.red));
             holder.tv_state.setBackgroundResource(R.drawable.shape_red_stroke);
             holder.tv_join.setVisibility(View.INVISIBLE);
         }
+//        int state = meeting.getState();
+//        if(state == 0){
+//            holder.tv_state.setText("待开始");
+//            holder.tv_state.setTextColor(UIUtils.getColor(R.color.gray));
+//            holder.tv_state.setBackgroundResource(R.drawable.shape_gray_stroke);
+//            holder.tv_join.setVisibility(View.INVISIBLE);
+//        }else if(state == 1){
+//            holder.tv_state.setText("正在进行");
+//            holder.tv_state.setTextColor(Color.parseColor("#FDBB43"));
+//            holder.tv_state.setBackgroundResource(R.drawable.shape_ing_stroke);
+//            holder.tv_join.setVisibility(View.VISIBLE);
+//        }else if(state == 2){
+//            holder.tv_state.setText("已结束");
+//            holder.tv_state.setTextColor(UIUtils.getColor(R.color.red));
+//            holder.tv_state.setBackgroundResource(R.drawable.shape_red_stroke);
+//            holder.tv_join.setVisibility(View.INVISIBLE);
+//        }
 
         return view;
     }

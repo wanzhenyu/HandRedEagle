@@ -199,6 +199,8 @@ public class Fragment0 extends Fragment {
 //                        intent = new Intent(getActivity(), Activity_list.class);
                         ItemBean itemBean = beans.get(arg2);
                         String name = itemBean.getName();
+                        Log.e("qqq","模块名称："+name);
+
                         if (TextUtils.equals(name, "行政服务")) {
 
 
@@ -238,6 +240,7 @@ public class Fragment0 extends Fragment {
                             startActivity(intent);
                         }else{//Activity_listxzfw
                             //MdmItemActivity
+                            Log.e("qqq","添加到首页：");
                             intent = new Intent(getActivity(), AddItemXingZhengFuWuActivity.class);
                             itemBean.setIsAdd(false);
                             intent.putExtra("item",itemBean);

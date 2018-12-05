@@ -160,7 +160,17 @@ public class ShiZhiOrXianJiActivity extends Activity {
             if(tempdata != null && tempdata.size()>0){
                 for (int i=tempdata.size()-1;i<tempdata.size();i--){
                     MyCityBean2 myCityBean2 = tempdata.get(i);
-                    bottomorgChildNode.add(myCityBean2);
+                    DbUtils dbUtils =  DbUtils.create(ShiZhiOrXianJiActivity.this, Common.DB_NAME);
+                    try {
+                        MyCityBean2 myCityBean21 = dbUtils.findById(MyCityBean2.class,myCityBean2.getId()+"");
+                        if (myCityBean21!=null){
+                            bottomorgChildNode.add(myCityBean21);
+                        }else{
+                            bottomorgChildNode.add(myCityBean2);
+                        }
+                    } catch (DbException e) {
+                        e.printStackTrace();
+                    }
                     if( i ==0){
                         break;
                     }

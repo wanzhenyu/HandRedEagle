@@ -87,7 +87,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/gray"
+                android:textColor="#43a7f0"
                 android:gravity="center"
                 android:text="视频通话"
                 android:layout_marginTop="10dp"
@@ -115,7 +115,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/gray"
+                android:textColor="#43a7f0"
                 android:gravity="center"
                 android:text="音频通话"
                 android:layout_marginTop="10dp"
@@ -149,15 +149,15 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/gray"
+            android:textColor="@color/black"
             android:gravity="center_vertical"
             android:text="号码"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/red"
+            android:textColor="@color/gray"
             android:gravity="center_vertical"
             android:text="7006"
             android:id="@+id/tv_number"

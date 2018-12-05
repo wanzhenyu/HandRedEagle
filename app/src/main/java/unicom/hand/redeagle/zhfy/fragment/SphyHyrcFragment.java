@@ -342,7 +342,7 @@ public class SphyHyrcFragment extends Fragment {
         queryMeeting.setPageNo(PageIndex);
         queryMeeting.setPageSize(PageCount);
 //        queryMeeting.setRole("");
-        queryMeeting.setSearchType(0);
+        queryMeeting.setSearchType(1);
 //        queryMeeting.setTotal(10);
 //        queryMeeting.setSearchKey("");
         queryMeeting.setQueryDate(System.currentTimeMillis());
@@ -372,9 +372,19 @@ public class SphyHyrcFragment extends Fragment {
                                         HyrcBeanMd51 hyrcBeanMd5 = beans.get(i);
                                         Integer state = hyrcBeanMd5.getState();
                                         String title = hyrcBeanMd5.getSubject();
-
+                                        long startTime = Long.parseLong(hyrcBeanMd5.getStartTime());
+                                        long endTime = Long.parseLong(hyrcBeanMd5.getExpiryTime());
                                         if(UIUtils.getListBySphyTitle(type,title)){
-                                            hyrcbeans.add(hyrcBeanMd5);
+                                            long currenttime = System.currentTimeMillis();
+
+                                            if(currenttime < startTime){//待开始
+                                                hyrcbeans.add(hyrcBeanMd5);
+                                            }else if(startTime<=currenttime && currenttime<=endTime){//进行中
+                                                hyrcbeans.add(hyrcBeanMd5);
+                                            }else{//已结束
+
+                                            }
+
                                         }
 //                                        if(state == 0){
 //                                            hyrcbeans.add(hyrcBeanMd5);
@@ -412,7 +422,7 @@ public class SphyHyrcFragment extends Fragment {
                             iv_zw.setVisibility(View.VISIBLE);
 //                            Toast.makeText(getActivity(), "获取列表失败", Toast.LENGTH_SHORT).show();
                         }
-                    } catch (JSONException e) {
+                    } catch (Exception e) {
                         mPullRefreshScrollView.setVisibility(View.GONE);
                         iv_zw.setVisibility(View.VISIBLE);
 //                        Toast.makeText(getActivity(), "没有请求到数据", Toast.LENGTH_SHORT).show();

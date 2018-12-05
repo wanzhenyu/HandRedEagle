@@ -17,41 +17,28 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.DbUtils;
 import com.lidroid.xutils.db.sqlite.Selector;
 import com.lidroid.xutils.db.sqlite.WhereBuilder;
 import com.lidroid.xutils.exception.DbException;
 import com.yealink.common.data.AccountConstant;
-import com.yealink.common.data.Contact;
-import com.yealink.common.data.OrgNode;
 import com.yealink.common.data.SipProfile;
 import com.yealink.sdk.RegistListener;
 import com.yealink.sdk.YealinkApi;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import unicom.hand.redeagle.R;
-import unicom.hand.redeagle.zhfy.AppApplication;
 import unicom.hand.redeagle.zhfy.Common;
-import unicom.hand.redeagle.zhfy.MainActivity;
-import unicom.hand.redeagle.zhfy.adapter.ListViewAdapter;
-import unicom.hand.redeagle.zhfy.bean.ItemBean;
 import unicom.hand.redeagle.zhfy.bean.MyCityBean2;
-import unicom.hand.redeagle.zhfy.bean.MyNodeBean;
-import unicom.hand.redeagle.zhfy.bean.SerializableMap;
-import unicom.hand.redeagle.zhfy.ui.old.Activity_list;
-import unicom.hand.redeagle.zhfy.utils.GsonUtil;
 import unicom.hand.redeagle.zhfy.view.CustomHorizontalScrollView;
 import unicom.hand.redeagle.zhfy.view.MyListView;
 
@@ -411,7 +398,9 @@ public class XingZhengFuWuActivity extends AppCompatActivity {
                             "face2face")).and(WhereBuilder.b("valid", "=",
                             1))
                     .orderBy("sort", false));
-
+            List<MyCityBean2> listall
+                    = db.findAll(MyCityBean2.class);
+            Log.e("aaa","listall：="+listall.size());
 //            String json = GsonUtil.getJson(list);
 //            Log.e("aaa","面对面："+json);
 //

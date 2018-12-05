@@ -1,6 +1,5 @@
 package unicom.hand.redeagle.zhfy.ui;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -22,6 +21,8 @@ import android.widget.Toast;
 
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
+import com.lidroid.xutils.DbUtils;
+import com.lidroid.xutils.exception.DbException;
 import com.yealink.common.data.AccountConstant;
 import com.yealink.common.data.SipProfile;
 import com.yealink.sdk.RegistListener;
@@ -34,10 +35,10 @@ import java.util.List;
 import unicom.hand.redeagle.R;
 import unicom.hand.redeagle.zhfy.AppApplication;
 import unicom.hand.redeagle.zhfy.BaseActivity;
+import unicom.hand.redeagle.zhfy.Common;
 import unicom.hand.redeagle.zhfy.bean.MyCityBean2;
 import unicom.hand.redeagle.zhfy.utils.GsonUtil;
 import unicom.hand.redeagle.zhfy.utils.GsonUtils;
-import unicom.hand.redeagle.zhfy.view.MyListView;
 
 import static unicom.hand.redeagle.R.id.tv_status;
 
@@ -80,8 +81,26 @@ public class PhoneRecoderActivity extends BaseActivity {
             }.getType();
             ArrayList<MyCityBean2> tempdata = GsonUtil.getGson().fromJson(collectjson
                     , dataType);
-            bottomorgChildNode.addAll(tempdata);
+            if(tempdata != null && tempdata.size()>0){
+                for (int i=tempdata.size()-1;i<tempdata.size();i--){
+                    MyCityBean2 myCityBean2 = tempdata.get(i);
+                    DbUtils dbUtils =  DbUtils.create(PhoneRecoderActivity.this, Common.DB_NAME);
+                    try {
+                        MyCityBean2 myCityBean21 = dbUtils.findById(MyCityBean2.class,myCityBean2.getId()+"");
+                        if (myCityBean21!=null){
+                            bottomorgChildNode.add(myCityBean21);
+                        }else{
+                            bottomorgChildNode.add(myCityBean2);
+                        }
+                    } catch (DbException e) {
+                        e.printStackTrace();
+                    }
 
+                    if( i ==0){
+                        break;
+                    }
+                }
+            }
         }
         setDialog();
         myLvAdapter1 = new MyLvAdapter1();

@@ -5,28 +5,21 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.JsonSyntaxException;
-import com.google.gson.reflect.TypeToken;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import com.yealink.common.data.Meeting;
-import com.yealink.sdk.MeetingListener;
-import com.yealink.sdk.YealinkApi;
 
 import net.tsz.afinal.http.AjaxCallBack;
 
@@ -34,22 +27,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 import unicom.hand.redeagle.R;
 import unicom.hand.redeagle.zhfy.AppApplication;
-import unicom.hand.redeagle.zhfy.adapter.HyrcAdapter;
 import unicom.hand.redeagle.zhfy.adapter.HyrcMd5Adapter;
 import unicom.hand.redeagle.zhfy.bean.DeleteMeetBean;
 import unicom.hand.redeagle.zhfy.bean.HyrcBeanMd51;
-import unicom.hand.redeagle.zhfy.bean.MyCityBean2;
-import unicom.hand.redeagle.zhfy.bean.QueryMeetingBean;
 import unicom.hand.redeagle.zhfy.bean.QueryMeetingBean1;
 import unicom.hand.redeagle.zhfy.ui.LookVideoMeetingActivity;
 import unicom.hand.redeagle.zhfy.ui.MeetDetailActivity;
-import unicom.hand.redeagle.zhfy.ui.MeetingRecoderActivity;
 import unicom.hand.redeagle.zhfy.utils.GsonUtil;
 import unicom.hand.redeagle.zhfy.utils.GsonUtils;
 import unicom.hand.redeagle.zhfy.utils.UIUtils;
@@ -64,7 +52,7 @@ public class HyrcFragment extends Fragment {
     private List<HyrcBeanMd51> hyrcbeans;
     private MyListView lv_hyrc;
     List<Meeting> lists;
-    private int intentstate;
+    private int intentstate=1;
 
     private PullToRefreshScrollView mPullRefreshScrollView;
     int PageIndex = 1;
@@ -156,14 +144,22 @@ public class HyrcFragment extends Fragment {
                 HyrcBeanMd51 HyrcBeanMd51 = (HyrcBeanMd51)adapterView.getAdapter().getItem(i);
                 Integer state = HyrcBeanMd51.getState();
                 Intent intent = null;
-                if(state == 1 || state == 0){
-                     intent = new Intent(getActivity(), MeetDetailActivity.class);
-                }else{
-                    intent = new Intent(getActivity(), LookVideoMeetingActivity.class);
+
+                final long startTime = Long.parseLong(HyrcBeanMd51.getStartTime());
+                long currenttime = System.currentTimeMillis();
+                if (state == 0||currenttime < startTime){
+                    Toast.makeText(getActivity(),"会议暂未开始",Toast.LENGTH_LONG).show();
+                }else {
+                    if(state == 1 || state == 0){
+                        intent = new Intent(getActivity(), MeetDetailActivity.class);
+                    }else{
+                        intent = new Intent(getActivity(), LookVideoMeetingActivity.class);
+                    }
+                    intent.putExtra("type",type);
+                    intent.putExtra("confId",HyrcBeanMd51.getConferenceRecordId());
+                    startActivityForResult(intent,1);
                 }
-                intent.putExtra("type",type);
-                intent.putExtra("confId",HyrcBeanMd51.getConferenceRecordId());
-                startActivityForResult(intent,1);
+
             }
         });
         mPullRefreshScrollView = (PullToRefreshScrollView) view.findViewById(R.id.pull_refresh_scrollview);
@@ -318,10 +314,12 @@ public class HyrcFragment extends Fragment {
             queryMeeting.setQueryDate(System.currentTimeMillis());
              json = GsonUtil.getJson(queryMeeting);
         }else{
-            QueryMeetingBean queryMeeting = new QueryMeetingBean();
+            QueryMeetingBean1 queryMeeting = new QueryMeetingBean1();
             queryMeeting.setPageNo(PageIndex);
             queryMeeting.setPageSize(PageCount);
-            queryMeeting.setSearchType(intentstate);
+            List<Integer> seartypes = new ArrayList<>();
+            seartypes.add(2);
+            queryMeeting.setSearchType(seartypes);
             queryMeeting.setQueryDate(System.currentTimeMillis());
             json = GsonUtil.getJson(queryMeeting);
         }
@@ -350,27 +348,31 @@ public class HyrcFragment extends Fragment {
                                         HyrcBeanMd51 HyrcBeanMd51 = beans.get(i);
                                         Integer state = HyrcBeanMd51.getState();
                                         String title = HyrcBeanMd51.getSubject();
-
-                                        if(state == intentstate){
                                             if(UIUtils.getListByTitle(type,title)){
                                                 hyrcbeans.add(HyrcBeanMd51);
                                             }
-
-                                        }else{
-                                            if(state == 0){
-                                                if(UIUtils.getListByTitle("0",title)){
-                                                    hyrcbeans.add(HyrcBeanMd51);
-                                                }
-                                            }
-
-
-                                        }
+//                                        if(state == intentstate){
+//                                            if(UIUtils.getListByTitle(type,title)){
+//
+//                                                hyrcbeans.add(HyrcBeanMd51);
+//                                            }
+//
+//                                        }else{
+//                                            if(state == 0){
+//                                                if(UIUtils.getListByTitle("0",title)){
+//                                                    hyrcbeans.add(HyrcBeanMd51);
+//                                                }
+//                                            }
+//
+//
+//                                        }
+//                                        hyrcbeans.add(HyrcBeanMd51);
 
                                     }
                                     if(hyrcbeans.size()<=0){
                                         mPullRefreshScrollView.setVisibility(View.GONE);
                                         iv_zw.setVisibility(View.VISIBLE);
-                                        Toast.makeText(getActivity(), "没有请求到数据", Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(getActivity(), "没有请求到数据", Toast.LENGTH_SHORT).show();
                                     }
 
                                     if(hyrcadapter != null){
@@ -383,7 +385,7 @@ public class HyrcFragment extends Fragment {
                                         iv_zw.setVisibility(View.VISIBLE);
 
                                     }
-                                    Toast.makeText(getActivity(), "没有请求到数据", Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(getActivity(), "没有请求到数据", Toast.LENGTH_SHORT).show();
                                 }
 
                             }else{
@@ -393,7 +395,7 @@ public class HyrcFragment extends Fragment {
                         }else{
                             mPullRefreshScrollView.setVisibility(View.GONE);
                             iv_zw.setVisibility(View.VISIBLE);
-                            Toast.makeText(getActivity(), "获取列表失败", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getActivity(), "获取列表失败", Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
                         if(hyrcbeans.size()<=0){
@@ -401,7 +403,7 @@ public class HyrcFragment extends Fragment {
                             iv_zw.setVisibility(View.VISIBLE);
 
                         }
-                        Toast.makeText(getActivity(), "没有请求到数据", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getActivity(), "没有请求到数据", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                     }
                 }

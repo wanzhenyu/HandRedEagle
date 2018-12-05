@@ -22,9 +22,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.zhy.view.flowlayout.FlowLayout;
-import com.zhy.view.flowlayout.TagAdapter;
-
 import net.tsz.afinal.http.AjaxCallBack;
 
 import org.json.JSONArray;
@@ -39,13 +36,11 @@ import java.util.Map;
 
 import unicom.hand.redeagle.R;
 import unicom.hand.redeagle.zhfy.AppApplication;
-import unicom.hand.redeagle.zhfy.PublishMeetingActivity1;
 import unicom.hand.redeagle.zhfy.adapter.PopListAdapter;
 import unicom.hand.redeagle.zhfy.adapter.PopUserListAdapter;
 import unicom.hand.redeagle.zhfy.bean.MeetDetail;
 import unicom.hand.redeagle.zhfy.bean.MeetDetailListBean;
 import unicom.hand.redeagle.zhfy.bean.MyNodeBean;
-import unicom.hand.redeagle.zhfy.bean.PeopleBean;
 import unicom.hand.redeagle.zhfy.bean.PeopleOnLine;
 import unicom.hand.redeagle.zhfy.bean.PeopleOnLineBean;
 import unicom.hand.redeagle.zhfy.bean.QueryLayoutBean;
@@ -78,12 +73,12 @@ public class LayoutActivity extends Activity {
     private String userName = "";
     private String name = "";
     private String userEntity = "";
-    private boolean enablePolling = false;
+    private boolean enablePolling = true;
     private int pollingNumber = 11;
-    private int pollingTimeInterval = 0;
-    private boolean enableSpeechExcitation = false;
-    private int speechExcitationTime = 0;
-    private boolean osdEnable = false;
+    private int pollingTimeInterval = 30;
+    private boolean enableSpeechExcitation = true;
+    private int speechExcitationTime = 2;
+    private boolean osdEnable = true;
     private SaveLayoutBean saveLayoutBean;
     private LinearLayout ll_yyjl;
     private ImageView iv_video_jili;
@@ -187,7 +182,6 @@ public class LayoutActivity extends Activity {
                     iv_lun_xun.setImageResource(R.drawable.switch_on);
                     ll_lunxun.setVisibility(View.VISIBLE);
                 }
-                enablePolling();
 
             }
         });
@@ -249,6 +243,12 @@ public class LayoutActivity extends Activity {
         getPeopleOnLine();
 //        getTempLayout();
 //        getJoinMember();
+
+        if(osdEnable){
+            ll_lunxun.setVisibility(View.VISIBLE);
+        }else{
+            ll_lunxun.setVisibility(View.INVISIBLE);
+        }
 
     }
     private void popWindowUserList(Context context,List<MeetDetailListBean.Participants> participants1){
@@ -433,9 +433,74 @@ public class LayoutActivity extends Activity {
             }
         });
     }
+    private void submitData_1N() {
 
+        saveLayoutBean.setConferenceRecordId(confId);
+        saveLayoutBean.setConfEntity(intentconfEntity);
+        saveLayoutBean.setConferenceLayoutId(conferenceLayoutId);
+        saveLayoutBean.setLayoutUser(layoutuser);
+//        String lunxuntime = tv_lunxun_time.getText().toString().trim();
+//        if(TextUtils.isEmpty(lunxuntime)){
+//            Toast.makeText(this, "请先输入轮询间隔", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//        pollingTimeInterval = Integer.parseInt(lunxuntime);
+//        if(TextUtils.equals(layoutType,"1+N")){
+//            String jilitime = et_jili_time.getText().toString().trim();
+//            if(TextUtils.isEmpty(jilitime)){
+//                Toast.makeText(this, "请先输入激励时间", Toast.LENGTH_SHORT).show();
+//                return;
+//            }
+//            speechExcitationTime = Integer.parseInt(jilitime);
+//        }
+        if(layoutMaxView == -1){
+            if(TextUtils.equals(layoutType,"Average")){
+                layoutMaxView = 4;
+            }else if(TextUtils.equals(layoutType,"1+N")){
+                layoutMaxView = 7;
+            }
+        }
+
+        saveLayoutBean.setLayoutType(layoutType);
+        saveLayoutBean.setLayoutMaxView(layoutMaxView);
+        saveLayoutBean.setEnablePolling(enablePolling);
+        saveLayoutBean.setPollingType(pollingType);
+        saveLayoutBean.setPollingNumber(pollingNumber);
+        saveLayoutBean.setPollingTimeInterval(pollingTimeInterval);
+        saveLayoutBean.setEnableSpeechExcitation(enableSpeechExcitation);
+        saveLayoutBean.setSpeechExcitationTime(speechExcitationTime);
+        saveLayoutBean.setOsdEnable(osdEnable);
+        String json = GsonUtil.getJson(saveLayoutBean);
+        AppApplication.getDataProvider().saveSimpleLayout(json, new AjaxCallBack<Object>() {
+
+            @Override
+            public void onSuccess(Object o) {
+                super.onSuccess(o);
+                Log.e("aaa","保存布局："+o.toString());
+                try {
+                    JSONObject object = new JSONObject(o.toString());
+                    int ret = object.getInt("ret");
+                    if(ret == 1){
+
+
+
+                        Toast.makeText(LayoutActivity.this, "操作成功", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }else{
+                        Toast.makeText(LayoutActivity.this, "操作失败", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                super.onFailure(t, errorNo, strMsg);
+            }
+        });
+    }
     private void submitData() {
-
         saveLayoutBean.setConferenceRecordId(confId);
         saveLayoutBean.setConfEntity(intentconfEntity);
         saveLayoutBean.setConferenceLayoutId(conferenceLayoutId);
@@ -467,6 +532,7 @@ public class LayoutActivity extends Activity {
                 layoutMaxView = 7;
             }
         }
+
         saveLayoutBean.setLayoutType(layoutType);
         saveLayoutBean.setLayoutMaxView(layoutMaxView);
         saveLayoutBean.setEnablePolling(enablePolling);
@@ -487,10 +553,14 @@ public class LayoutActivity extends Activity {
                     JSONObject object = new JSONObject(o.toString());
                     int ret = object.getInt("ret");
                     if(ret == 1){
+
                         Toast.makeText(LayoutActivity.this, "操作成功", Toast.LENGTH_SHORT).show();
                         finish();
                     }else{
-                        Toast.makeText(LayoutActivity.this, "操作失败", Toast.LENGTH_SHORT).show();
+                        JSONObject rows = object.getJSONObject("error");
+                        String msg = rows.getString("msg");
+                        Toast.makeText(LayoutActivity.this, msg, Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(LayoutActivity.this, "操作失败", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -549,12 +619,6 @@ public class LayoutActivity extends Activity {
                             pollingNumber = pollingNumber1;
                             String pollingType1 = simpleLayout.getString("pollingType");
                             pollingType = pollingType1;
-//                            if(TextUtils.equals(pollingType,"Specified")){
-//                                tv_view_lunxun.setText(titles3[0]);
-//                            }else if(TextUtils.equals(pollingType,"All")){
-//                                tv_view_lunxun.setText(titles3[1]);
-//                            }
-
                             int pollingTimeInterval1 = simpleLayout.getInt("pollingTimeInterval");//轮询的时间间隔
                             int speechExcitationTime1 = simpleLayout.getInt("speechExcitationTime");//语音激励时间
                             boolean osdEnable1 = simpleLayout.getBoolean("osdEnable");//显示会场名称
@@ -626,7 +690,7 @@ public class LayoutActivity extends Activity {
 
 
                         }else {
-                            ll_lunxun.setVisibility(View.GONE);
+//                            ll_lunxun.setVisibility(View.GONE);
                             if(TextUtils.equals(layoutType,"1+N")) {
                                 tv_model_value.setText("1+7");
                             }else if(TextUtils.equals(layoutType,"Average")) {
@@ -730,11 +794,16 @@ public class LayoutActivity extends Activity {
 
                 setModeValue(layoutMaxView);
                 if(TextUtils.equals(layoutType,"1+N")){
+                    osdEnable = true;
+                    enableSpeechExcitation = true;
+                    speechExcitationTime = 2;
+                    pollingTimeInterval = 30;
                     ll_yyjl.setVisibility(View.VISIBLE);
                 }else{
                     ll_yyjl.setVisibility(View.GONE);
                 }
                 if(TextUtils.equals(layoutType,"Oneself")){
+                    osdEnable = true;
                     ll_dfqp.setVisibility(View.VISIBLE);
                     ll_not_dfqp.setVisibility(View.GONE);
                 }else{
@@ -742,6 +811,9 @@ public class LayoutActivity extends Activity {
                     ll_dfqp.setVisibility(View.GONE);
                     ll_not_dfqp.setVisibility(View.VISIBLE);
                 }
+
+//                isShowName
+//                submitData_1N();
 
             }
         });
@@ -778,7 +850,6 @@ public class LayoutActivity extends Activity {
                     tv_model_value.setText(titles1n[position]);
                     if(TextUtils.equals(layoutType,"1+N")){
                         if(id == 0){//2
-
                             layoutMaxView = 0;
                         }else if(id == 1){//3
                             layoutMaxView = 4;

@@ -5,159 +5,47 @@ import com.lidroid.xutils.db.annotation.Table;
 /**
  * Created by wzy on 17/11/7.
  */
-@Table(name = "t_Directory")
+@Table(name = "t_Directory_2018_1127")
 public class FaceBean {
     private String id;
-    private String Code;
-    private String ParentCode;
-    private String Remarks;
-    private String Valid;
-    private String Company;
-    private String CalledNum;
-    private String CallingNum;
-    private Integer Stars;
-    private Integer Sort;
-    private String Category;
-    private String CalledName;
-    private String CalledPassword;
-    private String CallingPassword;
-    private Integer Position;
-    private String CreateId;
-    private String CreateTime;
-    private String Creator;
-    private String Detail;
-    private Integer HasChildren;//是否有下级
-    private Integer Expanding;//是否展开
-
-
-    public Integer getPosition() {
-        return Position;
+    private int areaId;
+    private String areaCode;
+    private String parentCode;
+    private String calledName;
+    private String calledNum;
+    private String calledPassword;
+    private String callingNum;
+    private String callingPassword;
+    private Integer stars;
+    private Integer sort;
+    private String name;
+    private Integer hasChildren;
+    private Integer valid;
+    private Integer expanding;
+    private String category;
+    private Integer layer;
+    public int getAreaId() {
+        return areaId;
     }
 
-    public void setPosition(Integer position) {
-        Position = position;
+    public void setAreaId(int areaId) {
+        this.areaId = areaId;
     }
 
-    public Integer getHasChildren() {
-        return HasChildren;
+    public Integer getLayer() {
+        return layer;
     }
 
-    public void setHasChildren(Integer hasChildren) {
-        HasChildren = hasChildren;
-    }
-
-    public Integer getExpanding() {
-        return Expanding;
-    }
-
-    public void setExpanding(Integer expanding) {
-        Expanding = expanding;
-    }
-
-    public Integer getStars() {
-        return Stars;
-    }
-
-    public void setStars(Integer stars) {
-        Stars = stars;
-    }
-
-    public Integer getSort() {
-        return Sort;
-    }
-
-    public void setSort(Integer sort) {
-        Sort = sort;
+    public void setLayer(Integer layer) {
+        this.layer = layer;
     }
 
     public String getCategory() {
-        return Category;
+        return category;
     }
 
     public void setCategory(String category) {
-        Category = category;
-    }
-
-    public String getCalledName() {
-        return CalledName;
-    }
-
-    public void setCalledName(String calledName) {
-        CalledName = calledName;
-    }
-
-    public String getCalledPassword() {
-        return CalledPassword;
-    }
-
-    public void setCalledPassword(String calledPassword) {
-        CalledPassword = calledPassword;
-    }
-
-    public String getCallingPassword() {
-        return CallingPassword;
-    }
-
-    public void setCallingPassword(String callingPassword) {
-        CallingPassword = callingPassword;
-    }
-
-
-    public String getCreateId() {
-        return CreateId;
-    }
-
-    public void setCreateId(String createId) {
-        CreateId = createId;
-    }
-
-    public String getCreateTime() {
-        return CreateTime;
-    }
-
-    public void setCreateTime(String createTime) {
-        CreateTime = createTime;
-    }
-
-    public String getCreator() {
-        return Creator;
-    }
-
-    public void setCreator(String creator) {
-        Creator = creator;
-    }
-
-    public String getDetail() {
-        return Detail;
-    }
-
-    public void setDetail(String detail) {
-        Detail = detail;
-    }
-
-
-    public String getCalledNum() {
-        return CalledNum;
-    }
-
-    public void setCalledNum(String calledNum) {
-        this.CalledNum = calledNum;
-    }
-
-    public String getCallingNum() {
-        return CallingNum;
-    }
-
-    public void setCallingNum(String callingNum) {
-        this.CallingNum = callingNum;
-    }
-
-    public String getCompany() {
-        return Company;
-    }
-
-    public void setCompany(String company) {
-        this.Company = company;
+        this.category = category;
     }
 
     public String getId() {
@@ -169,37 +57,119 @@ public class FaceBean {
     }
 
     public String getCode() {
-        return Code;
+        return areaCode;
     }
 
-    public void setCode(String code) {
-        Code = code;
+    public void setAreaCode(String areaCode) {
+        this.areaCode = areaCode;
     }
-
 
     public String getParentCode() {
-        return ParentCode;
+        return parentCode;
     }
 
     public void setParentCode(String parentCode) {
-        ParentCode = parentCode;
+        this.parentCode = parentCode;
     }
 
-    public String getRemarks() {
-        return Remarks;
+    public String getCalledName() {
+        return calledName;
     }
 
-    public void setRemarks(String remarks) {
-        Remarks = remarks;
+    public void setCalledName(String calledName) {
+        this.calledName = calledName;
     }
 
-    public String getValid() {
-        return Valid;
+    public String getCalledNum() {
+        return calledNum;
     }
 
-    public void setValid(String valid) {
-        Valid = valid;
+    public void setCalledNum(String calledNum) {
+        this.calledNum = calledNum;
     }
 
+    public String getCalledPassword() {
+        return calledPassword;
+    }
+
+    public void setCalledPassword(String calledPassword) {
+        this.calledPassword = calledPassword;
+    }
+
+    public String getCallingNum() {
+        return callingNum;
+    }
+
+    public void setCallingNum(String callingNum) {
+        this.callingNum = callingNum;
+    }
+
+    public String getCallingPassword() {
+        return callingPassword;
+    }
+
+    public void setCallingPassword(String callingPassword) {
+        this.callingPassword = callingPassword;
+    }
+
+    public Integer getStars() {
+        return stars;
+    }
+
+    public void setStars(Integer stars) {
+        this.stars = stars;
+    }
+
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
+    }
+
+    public String getCompany() {
+        return name;
+    }
+
+    public Integer getValid() {
+        return valid;
+    }
+
+    public void setValid(Integer valid) {
+        this.valid = valid;
+    }
+
+    public Integer getExpanding() {
+        return expanding;
+    }
+
+    public void setExpanding(Integer expanding) {
+        this.expanding = expanding;
+    }
+
+    public void setCompany(String name) {
+        this.name = name;
+    }
+
+    public Integer getHasChildren() {
+        return hasChildren;
+    }
+
+    public String getAreaCode() {
+        return areaCode;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setHasChildren(Integer hasChildren) {
+        this.hasChildren = hasChildren;
+    }
 
 }

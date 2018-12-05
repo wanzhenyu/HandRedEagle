@@ -42,17 +42,13 @@ import java.util.TimeZone;
 
 import cn.qqtheme.framework.picker.DateTimePicker;
 import unicom.hand.redeagle.R;
-import unicom.hand.redeagle.zhfy.adapter.HyLcAdapter;
 import unicom.hand.redeagle.zhfy.bean.BookMeeting;
-import unicom.hand.redeagle.zhfy.bean.ConferenceBean;
 import unicom.hand.redeagle.zhfy.bean.MyNodeBean;
 import unicom.hand.redeagle.zhfy.bean.PeopleBean;
 import unicom.hand.redeagle.zhfy.bean.ProcedureInfos;
 import unicom.hand.redeagle.zhfy.bean.QueryLayoutBean;
 import unicom.hand.redeagle.zhfy.bean.SendHylc;
 import unicom.hand.redeagle.zhfy.bean.SerializableMap;
-import unicom.hand.redeagle.zhfy.bean.layoutUser;
-import unicom.hand.redeagle.zhfy.ui.HylcActivity;
 import unicom.hand.redeagle.zhfy.ui.SelectMemberJoinActivity;
 import unicom.hand.redeagle.zhfy.utils.GsonUtil;
 import unicom.hand.redeagle.zhfy.utils.GsonUtils;
@@ -382,7 +378,7 @@ public class PublishMeetingActivity1 extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         int  i =0;
-
+        Log.e("aaa",requestCode+"的id是："+",默认选中："+resultCode);
         if(requestCode == 2){
             if(resultCode == 3){
                 if(participants != null && participants.size()>0){

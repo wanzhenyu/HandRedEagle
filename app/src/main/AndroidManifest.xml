@@ -149,10 +149,9 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity android:name=".zhfy.PublishMeetingActivity" android:configChanges="orientation|keyboardHidden"
-            android:launchMode="singleTask"
+            android:launchMode="standard"
             android:screenOrientation="portrait"/>
         <activity android:name=".zhfy.PublishMeetingActivity1" android:configChanges="orientation|keyboardHidden"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".zhfy.ui.LookMeetingActivity"
@@ -186,7 +185,6 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity android:name=".zhfy.ui.SelectMemberJoinActivity" android:configChanges="orientation|keyboardHidden"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity android:name=".zhfy.ui.MdmContactDetailActivity" android:configChanges="orientation|keyboardHidden"
             android:launchMode="singleTask"

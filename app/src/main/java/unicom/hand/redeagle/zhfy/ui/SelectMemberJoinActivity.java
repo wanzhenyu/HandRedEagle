@@ -31,12 +31,8 @@ import java.util.List;
 import java.util.Map;
 
 import unicom.hand.redeagle.R;
-import unicom.hand.redeagle.zhfy.bean.MyCityBean2;
 import unicom.hand.redeagle.zhfy.bean.MyNodeBean;
-import unicom.hand.redeagle.zhfy.bean.PeopleBean;
 import unicom.hand.redeagle.zhfy.bean.SerializableMap;
-import unicom.hand.redeagle.zhfy.bean.layoutUser;
-import unicom.hand.redeagle.zhfy.utils.GsonUtil;
 import unicom.hand.redeagle.zhfy.utils.UIUtils;
 import unicom.hand.redeagle.zhfy.view.CustomHorizontalScrollView;
 import unicom.hand.redeagle.zhfy.view.MyListView;
@@ -57,7 +53,7 @@ public class SelectMemberJoinActivity extends AppCompatActivity {
     private int index = -1;
     private List<View> views;
     private MyLvAdapter1 myLvAdapter1;
-    private ArrayList<Contact> meetnowcontact;
+
     private int totalnum = 0;
     private TextView tv_number;
 //    boolean ischeck;
@@ -84,6 +80,8 @@ public class SelectMemberJoinActivity extends AppCompatActivity {
     private Map<String,String> clickItemCodes;
     private TextView tv_close;
 
+    private boolean mIsSingle = false;
+    private ArrayList<Contact> meetnowcontact;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -289,8 +287,6 @@ public class SelectMemberJoinActivity extends AppCompatActivity {
         }
         try {
             if(participants != null && participants.size()>0){
-                tv_number.setText("已选成员:"+participants.size()+">");
-
                 for (int i=0;i<participants.size();i++){
                     MyNodeBean peopleBean = participants.get(i);
                     String serialNumber = peopleBean.getSerialNumber();
@@ -299,12 +295,7 @@ public class SelectMemberJoinActivity extends AppCompatActivity {
                     }
 
                 }
-
-
-
-
-
-
+                tv_number.setText("已选成员:"+maps.size()+">");
             }else{
                 tv_number.setText("已选成员:"+0+">");
             }
@@ -390,6 +381,10 @@ public class SelectMemberJoinActivity extends AppCompatActivity {
 //        tv_number.setText("已选成员:"+totalnum+">");
         LinearLayout ll_lj = (LinearLayout)findViewById(R.id.ll_lj);
         selectnum = getIntent().getStringExtra("selectnum");
+
+        if(TextUtils.equals(selectnum,"1")){
+            mIsSingle = true;
+        }
         ll_lj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -400,6 +395,7 @@ public class SelectMemberJoinActivity extends AppCompatActivity {
                     }
 
                 }
+                Log.e("aaa","选中人数："+maps.size());
                 SerializableMap serializabmap = new SerializableMap();
                 serializabmap.setMap(maps);
                 Intent intent = new Intent();
@@ -449,7 +445,7 @@ public class SelectMemberJoinActivity extends AppCompatActivity {
                 }else{
                     nodeBean.setUid("");
                 }
-
+                Log.e("aaa","点击："+name);
 
 
 //                Boolean aBoolean = allcheck.get(isallchecknodeid);
@@ -481,6 +477,7 @@ public class SelectMemberJoinActivity extends AppCompatActivity {
                         myNodeBean.setCheck(false);
                         maps.remove(serialNumber);
                     }else{
+
                         meetnowcontact.add(orgNode);
 //                        checkBox.setImageResource(R.drawable.cb_checked);
                         myNodeBean.setCheck(true);
@@ -491,60 +488,32 @@ public class SelectMemberJoinActivity extends AppCompatActivity {
                         myLvAdapter1.notifyDataSetChanged();
                     }
                 }else{//未选中
-//                    checkBox.setImageResource(R.drawable.cb_checked);
-                    meetnowcontact.add(orgNode);
-                    nodeBean.setCheck(true);
-                    maps.put(serialNumber,nodeBean);
+                    Log.e("aaa","单选模式："+mIsSingle);
+                    if(mIsSingle){
+                        try {
+                            if(meetnowcontact != null && meetnowcontact.size()>0){
+                                meetnowcontact.clear();
+                            }
+                            maps.clear();
+                            meetnowcontact.add(orgNode);
+
+                            nodeBean.setCheck(true);
+                            maps.put(serialNumber,nodeBean);
+                            Log.e("aaa",mIsSingle+",选中数量："+maps.size());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }else{
+                        meetnowcontact.add(orgNode);
+                        nodeBean.setCheck(true);
+                        maps.put(serialNumber,nodeBean);
+                    }
                     if(myLvAdapter1 != null){
                         myLvAdapter1.notifyDataSetChanged();
                     }
                 }
 
-
-
-//                if(nodeBeens.size() == 0){
-//                    checkBox.setImageResource(R.drawable.cb_checked);
-//                    nodeBean.setCheck(true);
-//                    nodeBeens.add(nodeBean);
-//                }else{
-//                    int size = nodeBeens.size();
-//                    for (int u=0;u<size;u++){
-//                        MyNodeBean myNodeBean = nodeBeens.get(u);
-//                        String serialNumber1 = myNodeBean.getSerialNumber();
-//                        if(TextUtils.equals(serialNumber1,serialNumber)){
-//                            checkBox.setImageResource(R.drawable.cb_normal);
-//                            nodeBean.setCheck(false);
-//                            nodeBeens.remove(myNodeBean);
-//                            if(myLvAdapter1 != null){
-//                                myLvAdapter1.notifyDataSetChanged();
-//                            }
-//
-//                            break;
-//
-//
-//                        }else{
-//
-//
-//
-//
-//
-//
-//
-//                        }
-//                    }
-//
-//
-//                }
-
-//                Iterator<Map.Entry<String, MyNodeBean>> iterator = maps.entrySet().iterator();
-//                while (iterator.hasNext()){
-//                    MyNodeBean value = iterator.next().getValue();
-//
-//
-//                    meetnowcontact.add(value);
-//                }
-
-                tv_number.setText("已选成员:"+meetnowcontact.size()+">");
+                tv_number.setText("已选成员:"+maps.size()+">");
 
 
 

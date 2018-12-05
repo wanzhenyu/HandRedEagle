@@ -86,6 +86,8 @@ public class HyLcAdapter extends BaseAdapter {
                 refreshUi();
             }
         });
+
+
 //        String s = holder.et_input.getText().toString();
 //        if(TextUtils.isEmpty(s)){
 //            Log.e("aaa","空");
@@ -103,7 +105,17 @@ public class HyLcAdapter extends BaseAdapter {
         if(selectpos == i){
             holder.iv_select.setImageResource(R.drawable.cb_checked);
         }else{
-            holder.iv_select.setImageResource(R.drawable.cb_normal);
+            if(selectpos == -1){
+                boolean active = procedureInfos.isActive();
+                if(active){
+                    holder.iv_select.setImageResource(R.drawable.cb_checked);
+                }else{
+                    holder.iv_select.setImageResource(R.drawable.cb_normal);
+                }
+            }else{
+                holder.iv_select.setImageResource(R.drawable.cb_normal);
+            }
+
         }
 //        holder.et_input.addTextChangedListener(new TextWatcher() {
 //            @Override

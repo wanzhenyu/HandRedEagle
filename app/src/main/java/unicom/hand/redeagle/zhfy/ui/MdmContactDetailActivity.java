@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -25,6 +24,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.reflect.TypeToken;
+import com.lidroid.xutils.DbUtils;
+import com.lidroid.xutils.exception.DbException;
 import com.yealink.common.data.AccountConstant;
 import com.yealink.common.data.SipProfile;
 import com.yealink.sdk.RegistListener;
@@ -36,9 +37,9 @@ import java.util.List;
 
 import unicom.hand.redeagle.R;
 import unicom.hand.redeagle.zhfy.AppApplication;
+import unicom.hand.redeagle.zhfy.Common;
 import unicom.hand.redeagle.zhfy.adapter.PopListAdapter;
 import unicom.hand.redeagle.zhfy.bean.MyCityBean2;
-import unicom.hand.redeagle.zhfy.bean.MyNodeBean;
 import unicom.hand.redeagle.zhfy.utils.GsonUtil;
 import unicom.hand.redeagle.zhfy.utils.UIUtils;
 
@@ -73,6 +74,12 @@ public class MdmContactDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_contact_detail);
         jsonlist = new ArrayList<>();
         bean = (MyCityBean2)getIntent().getSerializableExtra("orgNode");
+        DbUtils db = DbUtils.create(MdmContactDetailActivity.this, Common.DB_NAME);
+        try {
+            bean = db.findById(MyCityBean2.class,bean.getId());
+        } catch (DbException e) {
+            e.printStackTrace();
+        }
 //        final MyCityBean2 bean = new MyCityBean2();
         TextView tv_number = (TextView)findViewById(R.id.tv_number);
         TextView tv_name = (TextView)findViewById(R.id.tv_name);
@@ -100,13 +107,6 @@ public class MdmContactDetailActivity extends AppCompatActivity {
             if(TextUtils.isEmpty(calledNum)){
                 tv_number.setText("暂无");
             }else{
-
-
-
-
-
-
-
 
                 tv_number.setText(calledNum);
                 ll_video.setOnClickListener(new View.OnClickListener() {
@@ -240,7 +240,6 @@ public class MdmContactDetailActivity extends AppCompatActivity {
     public void initCall(String calledNum){
         String collectjson = AppApplication.preferenceProvider.getCollectjson();
         if (TextUtils.isEmpty(collectjson)) {
-
             jsonlist.add(bean);
             AppApplication.preferenceProvider.setCollectjson(GsonUtil.getJson(jsonlist));
         } else {
@@ -265,15 +264,6 @@ public class MdmContactDetailActivity extends AppCompatActivity {
             }
             tempdata.add(bean);
             AppApplication.preferenceProvider.setCollectjson(GsonUtil.getJson(tempdata));
-
-
-
-//            if (TextUtils.equals(iscontain, "0")) {
-//                tempdata.add(bean);
-//                AppApplication.preferenceProvider.setCollectjson(GsonUtil.getJson(tempdata));
-//            }else{
-//                AppApplication.preferenceProvider.setCollectjson(GsonUtil.getJson(tempdata));
-//            }
 
         }
 

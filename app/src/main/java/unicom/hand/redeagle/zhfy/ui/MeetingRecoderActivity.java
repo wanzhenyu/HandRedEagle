@@ -8,10 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
@@ -29,14 +27,10 @@ import unicom.hand.redeagle.R;
 import unicom.hand.redeagle.zhfy.AppApplication;
 import unicom.hand.redeagle.zhfy.PublishMeetingActivity;
 import unicom.hand.redeagle.zhfy.adapter.HyrcMd5Adapter;
-import unicom.hand.redeagle.zhfy.adapter.PublishMeetingAdapter;
 import unicom.hand.redeagle.zhfy.bean.ConferenceBean;
-import unicom.hand.redeagle.zhfy.bean.HyrcBeanMd5;
 import unicom.hand.redeagle.zhfy.bean.HyrcBeanMd51;
-import unicom.hand.redeagle.zhfy.bean.IndexNewsBean;
-import unicom.hand.redeagle.zhfy.bean.QueryMeetingBean;
+import unicom.hand.redeagle.zhfy.bean.QueryMeetingBean1;
 import unicom.hand.redeagle.zhfy.bean.ResultBaseBean;
-import unicom.hand.redeagle.zhfy.bean.ResultBaseBean1;
 import unicom.hand.redeagle.zhfy.utils.GsonUtil;
 import unicom.hand.redeagle.zhfy.utils.GsonUtils;
 import unicom.hand.redeagle.zhfy.utils.UIUtils;
@@ -163,20 +157,15 @@ public class MeetingRecoderActivity extends Activity {
     }
 
     private void getData1() {
-        QueryMeetingBean queryMeeting = new QueryMeetingBean();
-//        queryMeeting.setActive(true);
-//        queryMeeting.setConfType(0);
-//        queryMeeting.setOrderByField("");
-//        queryMeeting.setOrderByType(1);
+        QueryMeetingBean1 queryMeeting = new QueryMeetingBean1();
         queryMeeting.setPageNo(PageIndex);
         queryMeeting.setPageSize(PageCount);
-//        queryMeeting.setRole("");
-        queryMeeting.setSearchType(2);
-//        queryMeeting.setTotal(10);
-//        queryMeeting.setSearchKey("");
+        List<Integer> seartypes = new ArrayList<>();
+        seartypes.add(2);
+        queryMeeting.setSearchType(seartypes);
         queryMeeting.setQueryDate(System.currentTimeMillis());
         String json = GsonUtil.getJson(queryMeeting);
-//        Log.e("bbb","查询md5会议:"+json);
+        Log.e("bbb","查询md5会议:"+json);
         AppApplication.getDataProvider().getMeetingList1(json, new AjaxCallBack<Object>() {
             @Override
             public void onSuccess(Object o) {
@@ -190,8 +179,8 @@ public class MeetingRecoderActivity extends Activity {
                             iv_zw.setVisibility(View.GONE);
                             mPullRefreshScrollView.setVisibility(View.VISIBLE);
                             JSONObject data = object.getJSONObject("data");
-                            JSONObject rows = data.getJSONObject("rows");
-                            JSONObject pageModel = rows.getJSONObject("pageModel");
+//                            JSONObject rows = data.getJSONObject("rows");
+                            JSONObject pageModel = data.getJSONObject("pageModel");
                             JSONArray conferences = pageModel.getJSONArray("records");
                             List<HyrcBeanMd51> beans = GsonUtils.getBeans(conferences.toString(), HyrcBeanMd51.class);
                             if(beans != null){
@@ -200,18 +189,18 @@ public class MeetingRecoderActivity extends Activity {
                                         HyrcBeanMd51 hyrcBeanMd5 = beans.get(i);
                                         Integer state = hyrcBeanMd5.getState();
                                         String title1 = hyrcBeanMd5.getSubject();
-                                        if(state == 2){
-                                            if(UIUtils.getListByTitle(type,title1)){
-                                                hyrcbeans.add(hyrcBeanMd5);
-                                            }
-                                        }else{
+//                                        if(state == 2){
+//
+//                                        }else{
+//                                        }
+                                        if(UIUtils.getListByTitle(type,title1)){
+                                            hyrcbeans.add(hyrcBeanMd5);
                                         }
-
                                     }
                                     if(hyrcbeans.size()<=0){
                                         mPullRefreshScrollView.setVisibility(View.GONE);
                                         iv_zw.setVisibility(View.VISIBLE);
-                                        Toast.makeText(MeetingRecoderActivity.this, "没有请求到数据", Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(MeetingRecoderActivity.this, "没有请求到数据", Toast.LENGTH_SHORT).show();
                                     }
                                     if(hyrcadapter != null){
                                         hyrcadapter.notifyDataSetChanged();
@@ -221,7 +210,7 @@ public class MeetingRecoderActivity extends Activity {
                                 }else{
                                     mPullRefreshScrollView.setVisibility(View.GONE);
                                     iv_zw.setVisibility(View.VISIBLE);
-                                    Toast.makeText(MeetingRecoderActivity.this, "没有请求到数据", Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(MeetingRecoderActivity.this, "没有请求到数据", Toast.LENGTH_SHORT).show();
                                 }
 
                             }else{
@@ -231,12 +220,12 @@ public class MeetingRecoderActivity extends Activity {
                         }else{
                             mPullRefreshScrollView.setVisibility(View.GONE);
                             iv_zw.setVisibility(View.VISIBLE);
-                            Toast.makeText(MeetingRecoderActivity.this, "获取列表失败", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(MeetingRecoderActivity.this, "获取列表失败", Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
                         mPullRefreshScrollView.setVisibility(View.GONE);
                         iv_zw.setVisibility(View.VISIBLE);
-                        Toast.makeText(MeetingRecoderActivity.this, "没有请求到数据", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(MeetingRecoderActivity.this, "没有请求到数据", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                     }
 
@@ -303,7 +292,7 @@ public class MeetingRecoderActivity extends Activity {
 //                                        }
 
                                     }else{
-                                        Toast.makeText(MeetingRecoderActivity.this, "没有请求到数据", Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(MeetingRecoderActivity.this, "没有请求到数据", Toast.LENGTH_SHORT).show();
                                     }
 
                                 }else{

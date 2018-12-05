@@ -1,6 +1,5 @@
 package unicom.hand.redeagle.zhfy.ui;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -38,9 +37,7 @@ import unicom.hand.redeagle.R;
 import unicom.hand.redeagle.zhfy.AppApplication;
 import unicom.hand.redeagle.zhfy.BaseActivity;
 import unicom.hand.redeagle.zhfy.Common;
-import unicom.hand.redeagle.zhfy.PublishMeetingActivity1;
 import unicom.hand.redeagle.zhfy.bean.MyCityBean2;
-import unicom.hand.redeagle.zhfy.ui.old.Activity_list;
 import unicom.hand.redeagle.zhfy.utils.GsonUtil;
 import unicom.hand.redeagle.zhfy.utils.GsonUtils;
 import unicom.hand.redeagle.zhfy.view.MyListView;
@@ -284,7 +281,17 @@ public class XingZhengFuWuRootActivity extends BaseActivity {
 
                         Log.e("aaa","索引："+i);
                         MyCityBean2 myCityBean2 = tempdata.get(i);
-                        bottomorgChildNode.add(myCityBean2);
+                        DbUtils dbUtils =  DbUtils.create(XingZhengFuWuRootActivity.this, Common.DB_NAME);
+                        try {
+                            MyCityBean2 myCityBean21 = dbUtils.findById(MyCityBean2.class,myCityBean2.getId()+"");
+                            if (myCityBean21!=null){
+                                bottomorgChildNode.add(myCityBean21);
+                            }else{
+                                bottomorgChildNode.add(myCityBean2);
+                            }
+                        } catch (DbException e) {
+                            e.printStackTrace();
+                        }
                         if( i ==0){
                             break;
                         }

@@ -9,12 +9,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.Window;
 
-import unicom.hand.redeagle.zhfy.AppApplication;
-import unicom.hand.redeagle.zhfy.Common;
-import unicom.hand.redeagle.zhfy.MainActivity;
-import unicom.hand.redeagle.R;
-import unicom.hand.redeagle.zhfy.bean.ThjlBean;
-import unicom.hand.redeagle.zhfy.utils.FileUtil;
+import com.lidroid.xutils.DbUtils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -23,7 +18,12 @@ import java.util.List;
 import me.weyye.hipermission.HiPermission;
 import me.weyye.hipermission.PermissionCallback;
 import me.weyye.hipermission.PermissionItem;
-import unicom.hand.redeagle.zhfy.utils.GsonUtil;
+import unicom.hand.redeagle.R;
+import unicom.hand.redeagle.zhfy.AppApplication;
+import unicom.hand.redeagle.zhfy.Common;
+import unicom.hand.redeagle.zhfy.MainActivity;
+import unicom.hand.redeagle.zhfy.bean.MyCityBean2;
+import unicom.hand.redeagle.zhfy.utils.FileUtil;
 
 /**
  *
@@ -139,6 +139,13 @@ public class Load extends Activity {
 	}
 
 	public void setDb(){
+        if (AppApplication.preferenceProvider.getFirst().equals("")){
+            try {
+            FileUtil.delAllFile(Common.ROOT_DIR);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 		File dir = new File(Common.ROOT_DIR);
 		if (!dir.exists()) {
             AppApplication.preferenceProvider.setUid("0");
@@ -148,7 +155,10 @@ public class Load extends Activity {
 		if (!file.exists()) {
 			try {
 				FileUtil.delAllFile(Common.ROOT_DIR);
-				FileUtil.loadFile(Load.this, file, R.raw.zshy);
+				FileUtil.loadFile(Load.this, file, R.raw.zshy2018);
+                AppApplication.preferenceProvider.setUid("0");
+                DbUtils db = DbUtils.create(Load.this, Common.DB_NAME);
+                db.deleteAll(MyCityBean2.class);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

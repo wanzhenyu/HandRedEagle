@@ -120,6 +120,13 @@ public class AddItemXingZhengFuWuActivity extends AppCompatActivity {
         common_title_right = (TextView)findViewById(R.id.common_title_right);
         tv_parentName = (TextView)findViewById(R.id.tv_parentName);
         tv_parentCode = (TextView)findViewById(R.id.tv_parentCode);
+        TextView tv_close = (TextView)findViewById(R.id.tv_close);
+        tv_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         v_line = findViewById(R.id.v_line);
 
         issz = getIntent().getStringExtra("issz");
